@@ -1,0 +1,9 @@
+assets/js/contact.js
+aws_upload
+simple_upload
+static/fonts
+static/images
+public/
+resources/
+.hugo_build.lock
+.git
