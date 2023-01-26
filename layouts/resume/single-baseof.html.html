@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang='en-ca'>
+  {{ partial "base-head.html" . }}
+  {{ block "head" . }}
+  {{ end }}
+  {{ partial "nav.html" . }}
+  <main>
+    {{ block "content" . }}
+    <h1>Resume</h1>
+      {{ .Content }}
+    {{ end }}
+  </main>
+</html>

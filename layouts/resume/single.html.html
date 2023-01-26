@@ -1,0 +1,6 @@
+{{ define "head" }}
+  {{- $options := (dict "outputStyle" "compressed") -}}
+  {{- $print := resources.Get "print.scss" | resources.ToCSS $options -}}
+  <link rel='stylesheet' href='{{ $print.Permalink }}'>
+  {{ partial "json+ld/resume.html" . }}
+{{ end }}

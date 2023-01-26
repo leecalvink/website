@@ -1,0 +1,5 @@
+{{ define "head" }}
+  {{- $contact := resources.Get "/js/contact.js" | resources.Minify -}}
+  <script src='/js/contact.js' async></script>
+  {{ partial "json+ld/contact.html" . }}
+{{ end }}

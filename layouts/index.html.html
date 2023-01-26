@@ -1,0 +1,9 @@
+{{ define "head" }}
+  {{ partial "json+ld/home.html" . }}
+{{ end }}
+{{ define "content" }}
+  <h1>Hello There</h1>
+  <article>
+    {{ .Content }}
+  </article>
+{{ end }}

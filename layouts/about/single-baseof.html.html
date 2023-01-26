@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang='en-ca'>
+  {{ partial "base-head.html" . }}
+  {{ block "head" . }}
+  {{ end }}
+  {{ partial "nav.html" . }}
+  <main>
+    <h1>About Me</h1>
+    {{ block "content" . }}
+    {{ end }}
+  </main>
+</html>

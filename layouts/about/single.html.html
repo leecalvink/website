@@ -1,0 +1,25 @@
+{{ define "head" }}
+  {{ partial "json+ld/about.html" . }}
+{{ end }}
+{{ define "content" }}
+  {{ .Content }}
+  <section>
+    <h2>Interests</h2>
+    <ul>
+      <li>outdoor activites—biking, hiking, kayaking</li>
+      <li>photography (I have a Canon <abbr>DSLR</abbr>)</li>
+      <li>technology—automation, <abbr title="Internet of Things">IoT</abbr>, Linux, programming</li>
+      <li>traveling</li>
+      <li>typography & design (in magazines and the web)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Hobbies</h2>
+    <ul>
+      <li>blogging/journaling</li>
+      <li>reading</li>
+      <li>video games (mostly on <abbr>PC</abbr>)</li>
+    </ul>
+  </section>
+{{ end}}
+
