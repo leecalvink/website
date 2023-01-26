@@ -1,0 +1,4 @@
+user-agent: *
+disallow: /404/
+
+sitemap: https://leecalvink.net/sitemap.xml
