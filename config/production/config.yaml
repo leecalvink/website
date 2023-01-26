@@ -1,0 +1,11 @@
+baseURL: 'https://leecalvink.net/'
+canonifyUrls: 'true'
+disableHugoGeneratorInject: 'true'
+disableKinds:
+  - taxonomy
+  - term
+enableRobotsTXT: 'false'
+languageCode: 'en-us'
+sitemap:
+  filename: 'sitemap.txt'
+title: 'The Official Site for Lee Calvin Kierstead'
