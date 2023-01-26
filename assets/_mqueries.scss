@@ -1,0 +1,102 @@
+// Measurements should be in REM, columns should be in REMs too
+// need to work on smaller screens too
+@media (max-width: 17.625rem) { // 281px
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (min-width: 17.688rem) { // 283px
+  form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 0.25em 0.5em
+  }
+  form > button {
+    grid-column: 1;
+  }
+  input, textarea {
+    grid-column: 1 / span 3;
+  }
+  label {
+    grid-column: 4;
+  }
+  button {
+    margin: 0;
+  }
+  #email {
+    grid-row: 1;
+  }
+  #name {
+    grid-row: 2;
+  }
+  #message {
+    grid-row: 4;
+  }
+}
+@media (max-width: 26.625rem) { // 426px
+  body {
+    font-size: 0.813rem; // 13px
+  }
+}
+@media (min-width: 26.688rem) { // 427px
+  body {
+    font-size: 0.875rem; // 14px
+  }
+}
+@media (min-width: 28rem) { // 448px
+  body {
+    font-size: 0.938rem; // 15px
+  }
+}
+@media (max-width: 30.125rem) { // 482px
+  body {
+    line-height: 1.2;
+  }
+}
+@media (min-width: 30.188rem) { // 483px
+  body {
+    font-size: 1rem; // 16px
+    line-height: 1.25;
+  }
+}
+@media (min-width: 32.063rem) { // 513px
+  body {
+    font-size: 1.063rem; // 17px
+    line-height: 1.3;
+  }
+}
+@media (min-width: 33.438rem) { // 535px
+  body {
+    font-size: 1.125rem; // 18px
+    line-height: 1.35;
+  }
+}
+@media (max-width: 34.625rem) { // 555px
+  body {
+    margin: 0 2.8%;
+  }
+}
+@media (min-width: 34.688rem) { // 576px
+  html {
+    --measure: 28.188em; // 451px
+  }
+  body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr var(--measure) 1fr;
+  }
+  body > * {
+    grid-column: 2;
+  }
+  header {
+    grid-row: 1;
+  }
+  main {
+    grid-row: 2;
+  }
+  footer {
+    grid-row: 3;
+  }
+}

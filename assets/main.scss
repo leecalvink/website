@@ -1,0 +1,155 @@
+@import 'font-faces';
+html {
+  /* global variables for themes
+  --sfont:
+  --leading: // should be based on ex units ?
+  */
+  // Fonts
+  --main-font: Equity, 'Times New Roman';
+  --sans-font: Concourse, Arial;
+  --mono-font: Triplicate, 'Courier New';
+  --bold-header: Advocate-bold;
+  --med-header: Advocate-med;
+  --reg-header: Advocate;
+  // Colors
+  --base-color: #2e4272;
+  --off-base: #b5a8e2;
+  --comp-color: #fcc44a; //4.5:1
+  --fg-color: #dadada;
+  --fill-color: #45c1c1;
+}
+body {
+  font-family: var(--main-font);
+  line-height: 1.2;
+  color: var(--fg-color);
+  background-color: var(--base-color);
+}
+header > nav {
+  padding: 1em 0;
+}
+nav > a {
+  font-size: 1.063em;
+  font-family: var(--sans-font);
+  margin-right: 2.25em;
+}
+nav > a::last-child {
+  margin-right: 0;
+}
+main {
+  padding-bottom: 1em;
+}
+footer > a {
+  font-family: var(--sans-font);
+  display: inline-flex;
+  align-items: center;
+}
+footer > a::first-child {
+  margin-right: 1em;
+}
+// Headings
+h1,h2,h3 {
+  margin: 0; // reset
+  color: var(--off-base);
+}
+h1 {
+  font-size: 1.438em;
+  font-family: var(--bold-header);
+  font-weight: bold;
+  padding-top: 0.7em;
+}
+h2 {
+  font-size: 1.313em;
+  font-family: var(--med-header);
+  padding-top: 0.65em;
+}
+h3 {
+  font-size: 1.188em;
+  font-family: var(--reg-header);
+  padding-top: 0.5em;
+}
+// End headings
+p {
+  margin: 0; // reset
+  padding: 0.5em 0;
+}
+abbr {
+  font-variant: all-small-caps;
+}
+a {
+  text-decoration: none;
+  color: var(--comp-color);
+  opacity: 0.8;
+}
+a:hover, 
+a:active {
+  transition: 0.3s;
+  opacity: 1; // 6.14:1
+}
+img {
+  max-width: 100%;
+  //height: auto;
+}
+svg {
+  width: 1em;
+  height: 2ex;
+  fill: var(--fill-color);
+}
+footer > a::after { //svg links
+  content: (attr(title));
+}
+a > svg {
+  margin-right: 0.125em;
+}
+ol, ul {
+  margin: 0; // reset
+  padding-left: 1.25em;
+}
+h2 + ul,
+h2 + ol {
+  margin-top: 0.5em;
+}
+time {
+  font-family: var(--sans-font);
+}
+sup {
+  font-feature-settings: 'sups' 1;
+  /*vertical-align: inherit;
+  font-size: inherit;*/
+}
+small {
+  font-family: var(--sans-font);
+  font-size: var(--sfont);
+}
+button {
+  background: var(--off-base);
+  border: 1pt solid var(--off-base);
+  border-radius: 4pt;
+  color: #242424;
+  cursor: pointer;
+  font-family: var(--sans-font);
+  font-size: 0.938em;
+  padding: 0.125em;
+}
+form > button {
+  margin-top: 0.5em;
+}
+kbd, samp {
+  font-family: var(--mono-font);
+}
+form { // could be in mquery
+  display: flex;
+  flex-direction: column;
+}
+input, textarea {
+  font-family: var(--main-font);
+  //font-size: inherit;
+}
+label {
+  font-family: var(--sans-font);
+  font-variant: all-small-caps;
+}
+.active {
+  pointer-events: none;
+  opacity: 0.7;
+}
+@import 'mqueries';

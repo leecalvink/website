@@ -1,0 +1,60 @@
+@font-face {
+  font-display: swap;
+  font-family: Equity;
+  font-weight: 400;
+  src: url('/fonts/equity/regular.woff2');
+  unicode-range: U+002C-002E,U+0040-005A,U+0061-007A,U+2013-2014;
+}
+@font-face {
+  font-display: swap;
+  font-family: Equity;
+  font-style: italic;
+  src: url('/fonts/equity/italic.woff2');
+  unicode-range: U+002D,U+0041-005A,U+0061-007A;
+}
+@font-face {
+  font-display: swap;
+  font-family: Equity;
+  font-weight: 700;
+  src: url('/fonts/equity/bold.woff2');
+  unicode-range: U+002D,U+0041-005A,U+0061-007A;
+}
+@font-face {
+  font-display: swap;
+  font-family: Concourse;
+  src: url('/fonts/concourse/4_medium.woff2');
+  unicode-range: U+0030-0039,U+0041-005A,U+0061-007A,U+00E9,U+2192;
+}
+@font-face {
+  font-display: swap;
+  font-family: Concourse;
+  font-style: italic;
+  src: url('/fonts/concourse/4_medium_italic.woff2');
+  unicode-range: U+002D,U+0041-005A,U+0061-007A;
+}
+@font-face {
+  font-display: swap;
+  font-family: Concourse;
+  font-weight: bold;
+  src: url('/fonts/concourse/6_semibold.woff2');
+  unicode-range: U+002D,U+0041-005A,U+0061-007A;
+}
+@font-face {
+  font-display: swap;
+  font-family: Advocate;
+  src: url('/fonts/advocate/54_wide_reg.woff2');
+  unicode-range: U+0041-005A,U+0061-007A;
+}
+@font-face {
+  font-display: swap;
+  font-family: Advocate-med;
+  src: url('/fonts/advocate/55_wide_med.woff2');
+  unicode-range: U+0041-005A,U+0061-007A;
+}
+@font-face {
+  font-display: swap;
+  font-family: Advocate-bold;
+  font-weight: bold;
+  src: url('/fonts/advocate/56_wide_bold.woff2');
+  unicode-range: U+0041-005A,U+0061-007A;
+}
