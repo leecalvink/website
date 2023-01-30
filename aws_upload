@@ -1,0 +1,138 @@
+#!/bin/bash
+# Script to sync my hugo files to my aws bucket
+
+# Notes on caching:
+# Users local cache should have a short life span in order for timely updates
+# when site is modified, users should get the new stuff relatively fast
+# Long cache time for CDNs, because one can always bust that cache (s-maxage)
+# Aggressive caching should be used for static assets (fonts, images, javascript, css)
+
+# Variables
+# =========
+base_command="aws s3 sync"
+site_directory=~/Documents/Projects/Hugo/leecalvink.net/public
+bucket_name=s3://leecalvink.net
+
+# Functions
+# =========
+# First arguement specifies file extension
+# Second arguement specifies content type
+# Third arguement is cache headers
+# Fourth arguement is encoding (gzip, br, deflate)
+sync_files () {
+  if [ $# -eq 4 ] ; then
+    $base_command $site_directory $bucket_name --exclude '*' \
+    --include $1 --content-type $2 \
+    --cache-control $3 --content-encoding $4
+  elif [ $# -eq 3 ] ; then
+    $base_command $site_directory $bucket_name --exclude '*' \
+    --include $1 --content-type $2 \
+    --cache-control $3
+  else
+    echo "There isn't enough arguments!"
+  fi
+}
+# Should put in expires info and content language?
+brotlify () {
+  fd $1 $site_directory -x brotli
+}
+classic_compress () {
+  fd $1 $site_directory -x gzip -9 
+}
+
+# Commands
+# ========
+
+# Zombie file cleanup
+# -------------------
+# Ensure no orphan files before building
+echo Removing old public files
+rm -R $site_directory/*
+# AWS zombie file cleanup
+echo Removing bucket files
+aws s3 rm $bucket_name --recursive
+
+# Build with proper environment
+# -----------------------------
+echo Building site
+# Minify compresses html
+hugo -e "production" --minify --quiet
+echo Minified html
+
+#echo Compressing assets
+# Compress assets with brotli (html, css, js, json, svg)
+#brotlify '.html'
+#brotlify '.css'
+#brotlify '.js'
+#brotlify '.svg'
+echo Gzipping assets
+# Gzip assets (html, css, js, json, svg)
+classic_compress '.html'
+classic_compress '.css'
+classic_compress '.js'
+classic_compress '.svg'
+# Rename gzip files
+echo Renaming files
+fd .gz $site_directory -x rename '.gz' ''
+fd .min.js $site_directory -x rename '.min' '' # Hugo changes the name
+
+# Sync files with cache control headers
+# -------------------------------------
+# Note: This would be infrequent for most of the static assets
+# Thus script should be improved to specify which content to upload
+
+# A) HTML Sync
+#sync_files '*.html.br' 'text/html;charset=utf-8' max-age=604800,must-revalidate br
+sync_files '*.html' 'text/html;charset=utf-8' 'max-age=604800,must-revalidate' gzip
+echo Synced HTML
+
+# B) CSS Sync (1 week/1 month)
+#sync_files '*.css.br' 'text/css;charset=utf-8' max-age=604800,s-maxage=2628000 br
+sync_files '*.css' 'text/css;charset=utf-8' 'max-age=604800,s-maxage=2628000,must-revalidate' gzip
+echo Synced CSS
+
+# C) Javascript Sync (exclude service worker!)
+#sync_files main.js.br 'text/javascript; charset=utf-8' max-age=604800, s-maxage=2628000, must-revalidate br
+#sync_files js/main.js 'text/javascript;charset=utf-8' 'max-age=604800,s-maxage=2628000,must-revalidate' gzip
+#echo Synced main JS
+
+sync_files js/contact.js 'text/javascript;charset=utf-8' 'max-age=604800,s-maxage=2628000,must-revalidate' gzip
+echo Synced contact JS
+
+# D) Fonts (2 months/4 months)
+sync_files '*.woff2' 'font/woff2' 'max-age=5256000,s-maxage=10512000,immutable,no-transform'
+echo Synced fonts
+
+# E) Images (separate ones for post images, favicons, and icons)
+# Favicons
+sync_files '*.png' 'image/png' 'max-age=5256000,s-maxage=10512000,immutable,no-transform'
+# Other images (2 months/4 months)
+#sync_files '*.webp' 'image/webp' \
+#'max-age=5256000, s-maxage=10512000, no-transform' 'no encode'
+#sync_files '*.avif' 'image/avif' \
+#'max-age=5256000, s-maxage=10512000, no-transform' 'no encode'
+echo Synced images
+
+# F) Svgs!?
+#sync_files '*.svg.br' 'image/svg+xml' max-age=525000,s-maxage=10512000 br
+#sync_files '*.svg.gz' 'image/svg+xml' max-age=525000,s-maxage=10512000 gzip
+sync_files '*.svg' 'image/svg+xml' 'max-age=525000,s-maxage=10512000,immutable' gzip
+echo Synced SVGs
+
+# Informational (aws s3, relevant options)
+# ========================================
+# exclude [string] (exclude files matching this pattern)
+# include [string] (include files matching this pattern)
+# content-type [string] (overrides guessed mime types)
+# cache-control [string] (caching behavior)
+# content-encoding [string] (for specifying decoding mechanisms)
+
+# Old nginx stuff
+# ===============
+# Cache-Control "no-cache"; #revalidate with server before using cache
+# Content-Security-Policy "default-src 'self' https://api.mailgun.net";
+# Feature-Policy "camera 'none'; geolocation 'none'; microphone 'none'";
+# X-Content-Type-Options "nosniff" always;
+# X-Frame-Options SAMEORIGIN always;
+# Referrer-Policy "no-referrer";
+echo Script finished run
