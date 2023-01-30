@@ -2,7 +2,7 @@
 description: Find out more about Lee Calvin Kierstead here.
 type: about
 title: About
-seotitle: About Lee Calvin Kierstead | leecalvink.net
+seotitle: About Lee Calvin Kierstead
 menu:
   main:
     weight: 20

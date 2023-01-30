@@ -4,7 +4,7 @@ type: resume
 menu: 
   main:
     weight: 30
-seotitle: Lee Calvin Kierstead’s Resumé | leecalvink.net
+seotitle: Lee Calvin Kierstead’s Resumé
 title: Resumé
 ---
 Lee Calvin Kierstead

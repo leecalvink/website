@@ -4,7 +4,7 @@ type: contact
 menu:
   main:
     weight: 40
-seotitle: Contact Lee Calvin Kierstead | leecalvink.net
+seotitle: Contact Lee Calvin Kierstead
 title: Contact
 ---
 If you need to reach me you can send me a quick email, and I will respond as soon as I am able. I will **not** respond to unsolicited marketing emails or anything a reasonable person would consider spam.
