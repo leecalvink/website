@@ -1,4 +1,4 @@
-{{- $options := (dict "outputStyle" "compressed") -}}
+{{ $options := (dict "outputStyle" "compressed") -}}
 {{- $style := resources.Get "main.scss" | resources.ToCSS $options -}}
 <link rel='stylesheet' href='{{ $style.Permalink }}'>
 <link rel='canonical' href='{{ .Permalink }}'>
