@@ -12,11 +12,12 @@ html {
   --med-header: Advocate-med;
   --reg-header: Advocate;
   // Colors
-  --base-color: #2e4272;
-  --off-base: #b5a8e2;
-  --comp-color: #fcc44a; //4.5:1
-  --fg-color: #dadada;
-  --fill-color: #45c1c1;
+  --base-color: hsl(0,0%,13%); //dark
+  --fg-color: white;
+  --off-base: hsl(0,50%,62%); //pink
+  --comp-color: hsl(240,50%,74%); //blue
+  --off-base: hsl(30,50%,48%); //orange
+  --fill-color: hsl(300,50%,58%); //magenta
 }
 body {
   font-family: var(--main-font);
