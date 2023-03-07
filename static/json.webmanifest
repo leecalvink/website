@@ -1,19 +1,19 @@
 {
-  "background_color": "#000",
+  "background_color": "hsl(0,0%,13%)",
   "description": "The official site for Lee Kierstead",
   "display": "minimal-ui",
   "name": "Lee Calvin Kierstead’s Site",
-  "short_name": "leecalvink.net",
+  "short_name": "Lee’s Site",
   "start_url": "/",
-  "theme_color": "#fff",
+  "theme_color": "hsl(30,50%,48%)",
   "icons": [
     {
-      "src": "/favicons/icon-192x192.png",
+      "src": "/favicon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/favicons/icon-512x512.png",
+      "src": "/favicon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
