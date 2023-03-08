@@ -1,8 +1,9 @@
 {{ $style := resources.Get "main.scss" | resources.ToCSS }}
 <link rel='stylesheet' href='{{ $style.Permalink }}'>
 <link rel='canonical' href='{{ .Permalink }}'>
-<link rel='icon' href='/favicon-48.png'>
+<link rel='icon' href='/images/favicons/favicon-48.png'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='manifest' href='/json.webmanifest'>
 <meta name='description' content='{{ .Description }}'>
 <title>{{ .Params.seotitle }}</title>{{/* .Title = .Page.Title */}}
 <script src='/js/main.js' defer></script>
