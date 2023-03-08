@@ -7,5 +7,5 @@ disableKinds:
 enableRobotsTXT: 'false'
 languageCode: 'en-us'
 sitemap:
-  filename: 'sitemap.txt'
+  filename: 'sitemap.xml'
 title: 'The Official Site for Lee Calvin Kierstead'
